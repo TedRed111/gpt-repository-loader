@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="pl.szczodrzynski.edziennik.utils.Utils" />
+
+        <import type="pl.szczodrzynski.edziennik.utils.models.Date" />
+
+        <import type="pl.szczodrzynski.edziennik.utils.models.Time" />
+
+        <variable
+            name="grade"
+            type="pl.szczodrzynski.edziennik.data.db.full.GradeFull" />
+
+        <variable
+            name="historyVisible"
+            type="boolean" />
+
+        <variable
+            name="addedDate"
+            type="String" />
+
+        <variable
+            name="weightText"
+            type="String" />
+
+        <variable
+            name="comment"
+            type="String" />
+
+        <variable
+            name="commentVisible"
+            type="boolean" />
+
+        <variable
+            name="devMode"
+            type="boolean" />
+
+        <variable
+            name="gradeValue"
+            type="float" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/gradeName"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:background="@drawable/bg_circle"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="@{grade.name}"
+                    android:textIsSelectable="true"
+                    android:textSize="36sp"
+                    app:autoSizeMaxTextSize="56sp"
+                    app:autoSizeMinTextSize="18sp"
+                    app:autoSizeTextType="uniform"
+                    tools:background="#ff4caf50"
+                    tools:text="1-" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/gradeSemester"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@{@string/dialog_grade_details_semester_format(grade.semester)}"
+                            android:textAppearance="?textAppearanceBodySmall"
+                            android:textIsSelectable="true"
+                            tools:text="semestr 1" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/gradeSubjectName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{grade.subjectLongName}"
+                        android:textAppearance="?textAppearanceTitleLarge"
+                        android:textIsSelectable="true"
+                        tools:text="pracownia urządzeń techniki komputerowej" />
+
+                    <TextView
+                        android:id="@+id/gradeWeight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isVisible="@{weightText != null}"
+                        android:text="@{weightText}"
+                        android:textAppearance="?textAppearanceTitleMedium"
+                        android:textIsSelectable="true"
+                        tools:text="waga 3"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.mikepenz.iconics.view.IconicsTextView
+                android:id="@+id/legend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="?textAppearanceBodySmall"
+                tools:text="[ - ] dodano notatki" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/dialog_grade_details_teacher"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:id="@+id/teacherName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@{grade.teacherName}"
+                android:textIsSelectable="true"
+                tools:text="Janósz Kowalski" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/dialog_grade_details_category"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@{Utils.ns(@string/dialog_grade_details_no_category, grade.category)}"
+                android:textIsSelectable="true"
+                tools:text="@string/dialog_grade_details_no_category" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/dialog_grade_details_description"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@{Utils.ns(@string/dialog_grade_details_no_description, grade.description)}"
+                android:textIsSelectable="true"
+                tools:text="@string/dialog_grade_details_no_description" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{grade.classAverage != null &amp;&amp; grade.classAverage != -1}"
+                android:text="@string/dialog_grade_details_class_average"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:isVisible="@{grade.classAverage != null &amp;&amp; grade.classAverage != -1}"
+                android:text="@{@string/dialog_grade_details_class_average_format(grade.classAverage)}"
+                android:textIsSelectable="true"
+                tools:text="1.72" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{commentVisible}"
+                android:text="@string/dialog_grade_details_comment"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:isVisible="@{commentVisible}"
+                android:textIsSelectable="true"
+                tools:text="Uczeń jest idiotą i nie umie robić nic w excelu. Niestety nie zdał tej klasy więc ta ocena i tak mu nic nie da, więc a cotam, dam mu jedynkę kolejną.. XDD" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{gradeValue != -1}"
+                android:text="@string/dialog_grade_details_value"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:isVisible="@{gradeValue != -1}"
+                android:text="@{@string/dialog_grade_details_class_average_format(gradeValue)}"
+                android:textIsSelectable="true"
+                tools:text="4.75" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/dialog_grade_details_added_date"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="@{@string/dialog_grade_details_date_format(Date.fromMillis(grade.addedDate).getFormattedString(), Time.fromMillis(grade.addedDate).getStringHM())}"
+                android:textIsSelectable="true"
+                tools:text="May 10, 12:03" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{devMode}"
+                android:text="@string/dialog_grade_details_id"
+                android:textAppearance="?textAppearanceLabelMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:isVisible="@{devMode}"
+                android:text="@{Long.toString(grade.id)}"
+                android:textIsSelectable="true"
+                tools:text="12345" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{grade.parentId instanceof Long}"
+                android:text="@string/dialog_grade_details_improved"
+                android:textAppearance="?textAppearanceBodySmall" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{historyVisible}"
+                android:text="@string/dialog_grade_details_history"
+                android:textAppearance="?textAppearanceTitleMedium" />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/gradeHistoryNest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="-8dp"
+                android:layout_marginTop="8dp"
+                android:isVisible="@{historyVisible}">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gradeHistoryList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/grades_item_grade" />
+            </androidx.core.widget.NestedScrollView>
+
+            <View
+                android:id="@+id/customValueDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/divider" />
+
+            <LinearLayout
+                android:id="@+id/customValueLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/grades_stats_custom_value_notice"
+                    android:textAppearance="?textAppearanceBodySmall" />
+
+                <Button
+                    android:id="@+id/customValueButton"
+                    style="?materialButtonSecondaryStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="0dp"
+                    android:text="@string/configure" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/notesButton"
+                style="?materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="@string/notes_button"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

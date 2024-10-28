@@ -1,0 +1,261 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
+
+apply from: 'git-info.gradle'
+
+android {
+    compileSdkVersion setup.compileSdk
+
+    namespace "pl.szczodrzynski.edziennik"
+
+    defaultConfig {
+        applicationId "pl.szczodrzynski.edziennik"
+        minSdkVersion setup.minSdk
+        targetSdkVersion setup.targetSdk
+
+        versionCode release.versionCode
+        versionName release.versionName
+
+        buildConfigField "java.util.Map<String, String>", "GIT_INFO", gitInfoMap
+        buildConfigField "String", "VERSION_BASE", "\"${release.versionName}\""
+
+        manifestPlaceholders = [
+            buildTimestamp: String.valueOf(System.currentTimeMillis())
+        ]
+
+        multiDexEnabled = true
+
+        externalNativeBuild {
+            cmake {
+                cppFlags "-std=c++11"
+            }
+        }
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+
+            correctErrorTypes = true
+        }
+    }
+
+    buildTypes {
+        debug {
+            getIsDefault().set(true)
+            minifyEnabled = false
+            applicationIdSuffix = ".debug"
+            manifestPlaceholders = [
+                buildTimestamp: "0"
+            ]
+        }
+
+        release {
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+        }
+    }
+
+    flavorDimensions += "platform"
+
+    productFlavors {
+        unofficial {
+            getIsDefault().set(true)
+            versionName "${release.versionName}-${gitInfo.versionSuffix}"
+        }
+
+        official {}
+        play {}
+    }
+
+    variantFilter { variant ->
+        def flavors = variant.flavors*.name
+        setIgnore(variant.buildType.name == "debug" && !flavors.contains("unofficial") || flavors.contains("main"))
+    }
+
+    sourceSets {
+        unofficial {
+            java.srcDirs = ["src/main/java", "src/play-not/java"]
+            manifest.srcFile("src/play-not/AndroidManifest.xml")
+        }
+
+        official {
+            java.srcDirs = ["src/main/java", "src/play-not/java"]
+            manifest.srcFile("src/play-not/AndroidManifest.xml")
+        }
+
+        play {
+            java.srcDirs = ["src/main/java", "src/play/java"]
+        }
+    }
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+        buildConfig = true
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += "-Xcontext-receivers"
+    }
+
+    packagingOptions {
+        resources {
+            excludes += ['META-INF/library-core_release.kotlin_module']
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+
+    lint {
+        checkReleaseBuilds false
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (!(task.name == "assembleUnofficialRelease" || task.name == "assembleOfficialRelease" || task.name == "signPlayReleaseBundle"))
+        return
+
+    def renameTaskName = "rename${task.name.capitalize()}"
+
+    def flavor = ""
+    if (task.name.startsWith("bundle"))
+        flavor = task.name.substring("bundle".length(), task.name.indexOf("Release")).uncapitalize()
+    if (task.name.startsWith("assemble"))
+        flavor = task.name.substring("assemble".length(), task.name.indexOf("Release")).uncapitalize()
+    if (task.name.startsWith("minify"))
+        flavor = task.name.substring("minify".length(), task.name.indexOf("Release")).uncapitalize()
+    if (task.name.startsWith("sign"))
+        flavor = task.name.substring("sign".length(), task.name.indexOf("Release")).uncapitalize()
+
+    if (flavor != "") {
+        tasks.register(renameTaskName, Copy) {
+            dependsOn(task.name)
+            duplicatesStrategy DuplicatesStrategy.FAIL
+            from file("${projectDir}/${flavor}/release/"),
+                    file("${projectDir}/build/outputs/apk/${flavor}/release/"),
+                    file("${projectDir}/build/outputs/mapping/${flavor}Release/"),
+                    file("${projectDir}/build/outputs/bundle/${flavor}Release/")
+            include "*-release.aab", "*-release.apk", "mapping.txt", "output-metadata.json"
+            destinationDir file("${projectDir}/release/")
+            rename ".+?\\.(.+)", "Edziennik_${android.defaultConfig.versionName}_${flavor}." + '$1'
+        }
+
+        task.finalizedBy(renameTaskName)
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // Language cores
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "androidx.multidex:multidex:2.0.1"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.4"
+
+    // Android Jetpack
+    implementation "androidx.appcompat:appcompat:1.7.0"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "androidx.constraintlayout:constraintlayout:2.1.4"
+    implementation "androidx.core:core-ktx:1.13.1"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.8.2"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.7.7"
+    implementation "androidx.recyclerview:recyclerview:1.3.2"
+    implementation "androidx.room:room-runtime:2.6.1"
+    implementation "androidx.room:room-ktx:2.6.1"
+    implementation "androidx.work:work-runtime-ktx:2.9.0"
+    kapt "androidx.room:room-compiler:2.6.1"
+
+    // Google design libs
+    implementation "com.google.android.material:material:1.12.0"
+    implementation "com.google.android.flexbox:flexbox:3.0.0"
+
+    // Play Services/Firebase
+    implementation "com.google.android.gms:play-services-wearable:18.2.0"
+    implementation("com.google.firebase:firebase-core") { version { strictly "19.0.2" } }
+    implementation "com.google.firebase:firebase-crashlytics:19.0.1"
+    implementation("com.google.firebase:firebase-messaging") { version { strictly "20.1.3" } }
+
+    // OkHttp, Retrofit, Gson, Jsoup
+    implementation("com.squareup.okhttp3:okhttp") { version { strictly "3.12.13" } }
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:converter-scalars:2.9.0"
+    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'org.jsoup:jsoup:1.14.3'
+    implementation "pl.droidsonroids:jspoon:1.3.2"
+    implementation "pl.droidsonroids.retrofit2:converter-jspoon:1.3.2"
+
+    // Szkolny.eu libraries/forks
+    implementation project(":navlib")
+    implementation "eu.szkolny:android-snowfall:1ca9ea2da3"
+    implementation "eu.szkolny:agendacalendarview:1.0.4"
+    implementation "eu.szkolny:cafebar:5bf0c618de"
+    implementation "eu.szkolny.fslogin:lib:2.0.0"
+    implementation "eu.szkolny:material-about-library:1d5ebaf47c"
+    implementation "eu.szkolny:mhttp:af4b62e6e9"
+    implementation "eu.szkolny:nachos:0e5dfcaceb"
+    implementation "eu.szkolny.selective-dao:annotation:6a337f9"
+    officialImplementation "eu.szkolny:ssl-provider:1.0.0"
+    unofficialImplementation "eu.szkolny:ssl-provider:1.0.0"
+
+    implementation "pl.szczodrzynski:numberslidingpicker:2921225f76"
+    implementation "pl.szczodrzynski:recyclertablayout:700f980584"
+    implementation "pl.szczodrzynski:tachyon:551943a6b5"
+    kapt "eu.szkolny.selective-dao:codegen:6a337f9"
+
+    // Iconics & related
+    implementation "com.mikepenz:iconics-core:5.3.2"
+    implementation "com.mikepenz:iconics-views:5.3.2"
+    implementation "com.mikepenz:materialdrawer:9.0.1"
+    implementation "com.mikepenz:community-material-typeface:5.8.55.0-kotlin@aar"
+    implementation 'com.mikepenz:google-material-typeface:4.0.0.2-kotlin@aar'
+    implementation "eu.szkolny:szkolny-font:95eabe7"
+
+    // Other dependencies
+    implementation "cat.ereza:customactivityoncrash:2.3.0"
+    implementation "com.android.volley:volley:1.2.1"
+    implementation "com.daimajia.swipelayout:library:1.2.0@aar"
+    implementation "com.github.Applandeo:Material-Calendar-View:15de569cbc" // https://github.com/Applandeo/Material-Calendar-View
+    implementation "com.github.CanHub:Android-Image-Cropper:2.2.2" // https://github.com/CanHub/Android-Image-Cropper
+    implementation "com.github.ChuckerTeam.Chucker:library:3.5.2" // https://github.com/ChuckerTeam/chucker
+    implementation "com.github.antonKozyriatskyi:CircularProgressIndicator:1.2.2" // https://github.com/antonKozyriatskyi/CircularProgressIndicator
+    implementation "com.github.bassaer:chatmessageview:2.0.1" // https://github.com/bassaer/ChatMessageView
+    implementation "com.github.smuyyh:JsonViewer:V1.0.6" // https://github.com/smuyyh/JsonViewer
+    implementation "com.github.underwindfall.PowerPermission:powerpermission-coroutines:1.4.0" // https://github.com/underwindfall/PowerPermission
+    implementation "com.github.underwindfall.PowerPermission:powerpermission:1.4.0" // https://github.com/underwindfall/PowerPermission
+    implementation "com.github.wulkanowy.uonet-request-signer:hebe-jvm:a99ca50a31" // https://github.com/wulkanowy/uonet-request-signer
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    implementation "com.jaredrummler:colorpicker:1.1.0"
+    implementation "io.coil-kt:coil:1.1.1"
+    implementation "me.dm7.barcodescanner:zxing:1.9.8"
+    implementation "me.grantland:autofittextview:0.2.1"
+    implementation "me.leolin:ShortcutBadger:1.1.22@aar"
+    implementation "org.greenrobot:eventbus:3.2.0"
+    implementation("com.heinrichreimersoftware:material-intro") { version { strictly "1.5.8" } }
+    implementation("pl.droidsonroids.gif:android-gif-drawable") { version { strictly "1.2.15" } }
+
+    // Debug-only dependencies
+    debugImplementation "com.github.amitshekhariitbhu.Android-Debug-Database:debug-db:v1.0.6"
+}

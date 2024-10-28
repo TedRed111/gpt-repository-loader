@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) Kuba Szczodrzyński 2019-12-16.
+  -->
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/dayDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginBottom="8dp"
+            android:textAppearance="?textAppearanceTitleLarge"
+            android:textIsSelectable="true"
+            tools:text="wtorek, 17 grudnia" />
+
+        <TextView
+            android:id="@+id/lessonsInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:textIsSelectable="true"
+            android:visibility="gone"
+            tools:text="8:00 - 14:20 (7 lekcji, 6 godzin, 20 minut)"
+            tools:visibility="visible" />
+
+        <com.mikepenz.iconics.view.IconicsTextView
+            android:id="@+id/legend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:textAppearance="?textAppearanceBodySmall"
+            tools:text="[ - ] dodano notatki" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <FrameLayout
+            android:id="@+id/lessonChangesFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="5dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <include
+                android:id="@+id/lessonChanges"
+                layout="@layout/agenda_counter_item" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/teacherAbsenceFrame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:foreground="?selectableItemBackground"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="5dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <include
+                android:id="@+id/teacherAbsence"
+                layout="@layout/agenda_counter_item" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/eventsNoData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="16dp"
+                android:gravity="center"
+                android:text="@string/dialog_day_no_events"
+                android:textAppearance="?textAppearanceHeadlineSmall"
+                app:drawableTopCompat="@drawable/ic_no_events" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/dialog_no_events_hint" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/eventsView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            tools:listitem="@layout/event_list_item"
+            tools:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/notesButton"
+            style="?materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/notes_button" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

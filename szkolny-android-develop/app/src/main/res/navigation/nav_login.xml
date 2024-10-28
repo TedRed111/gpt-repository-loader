@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) Kuba Szczodrzyński 2020-4-9.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_login_new"
+    app:startDestination="@id/loginChooserFragment">
+
+    <fragment
+        android:id="@+id/loginChooserFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginChooserFragment"
+        android:label="LoginChooserFragment">
+        <action
+            android:id="@+id/action_loginChooserFragment_to_loginPlatformListFragment"
+            app:destination="@id/loginPlatformListFragment" />
+        <action
+            android:id="@+id/action_loginChooserFragment_to_loginFormFragment"
+            app:destination="@id/loginFormFragment" />
+        <!-- eggs -->
+        <action
+            android:id="@+id/action_loginChooserFragment_to_loginEggsFragment"
+            app:destination="@id/loginEggsFragment" />
+        <action
+            android:id="@+id/action_loginChooserFragment_to_labFragment"
+            app:destination="@id/labFragment" />
+    </fragment>
+    <!-- eggs -->
+    <fragment
+        android:id="@+id/loginEggsFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginEggsFragment"
+        android:label="LoginEggsFragment">
+        <action
+            android:id="@+id/action_loginEggsFragment_to_loginPrizeFragment"
+            app:destination="@id/loginPrizeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginPrizeFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginPrizeFragment"
+        android:label="LoginPrizeFragment">
+    </fragment>
+    <fragment
+        android:id="@+id/loginPlatformListFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginPlatformListFragment"
+        android:label="LoginPlatformListFragment">
+        <action
+            android:id="@+id/action_loginPlatformListFragment_to_loginFormFragment"
+            app:destination="@id/loginFormFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFormFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginFormFragment"
+        android:label="LoginFormFragment">
+        <action
+            android:id="@+id/action_loginFormFragment_to_loginProgressFragment"
+            app:destination="@id/loginProgressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginProgressFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginProgressFragment"
+        android:label="LoginProgressFragment">
+        <action
+            android:id="@+id/action_loginProgressFragment_to_loginSummaryFragment2"
+            app:destination="@id/loginSummaryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginSummaryFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginSummaryFragment"
+        android:label="LoginSummaryFragment">
+        <action
+            android:id="@+id/action_loginSummaryFragment_to_loginChooserFragment"
+            app:destination="@id/loginChooserFragment" />
+        <action
+            android:id="@+id/action_loginSummaryFragment_to_loginSyncFragment2"
+            app:destination="@id/loginSyncFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginSyncFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginSyncFragment"
+        android:label="LoginSyncFragment">
+        <action
+            android:id="@+id/action_loginSyncFragment_to_loginSyncErrorFragment2"
+            app:destination="@id/loginSyncErrorFragment" />
+        <action
+            android:id="@+id/action_loginSyncFragment_to_loginFinishFragment2"
+            app:destination="@id/loginFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginSyncErrorFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginSyncErrorFragment"
+        android:label="LoginSyncErrorFragment">
+        <action
+            android:id="@+id/action_loginSyncErrorFragment_to_loginFinishFragment2"
+            app:destination="@id/loginFinishFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFinishFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.login.LoginFinishFragment"
+        android:label="LoginFinishFragment" />
+    <fragment
+        android:id="@+id/labFragment"
+        android:name="pl.szczodrzynski.edziennik.ui.debug.LabFragment"
+        android:label="LabFragment" />
+</navigation>

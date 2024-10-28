@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="timetable_lesson_bg" format="reference" />
+    <attr name="timetable_lesson_cancelled_color" format="color" />
+    <attr name="timetable_lesson_change_color" format="color" />
+    <attr name="timetable_lesson_shifted_source_color" format="color" />
+    <attr name="timetable_lesson_shifted_target_color" format="color" />
+    <attr name="colorOnPrimaryContainer" format="color" />
+    <attr name="materialButtonSecondaryStyle" format="reference" />
+    <attr name="materialIconButtonSecondaryStyle" format="reference" />
+    <attr name="materialIconButtonContainerStyle" format="reference" />
+    <attr name="materialAlertDialogMonospaceTheme" format="reference" />
+</resources>
