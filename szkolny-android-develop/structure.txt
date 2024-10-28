@@ -1,0 +1,1564 @@
+.
+├── LICENSE
+├── README.md
+├── app
+│   ├── build.gradle
+│   ├── git-info.gradle
+│   ├── google-services.json
+│   ├── libs
+│   │   └── java-json.jar
+│   ├── proguard
+│   │   ├── eventbus.pro
+│   │   ├── jsoup.pro
+│   │   ├── okhttp3.pro
+│   │   └── zxing.pro
+│   ├── proguard-rules.pro
+│   ├── sampledata
+│   │   ├── check
+│   │   │   └── ic_check.xml
+│   │   ├── format
+│   │   │   ├── ic_format_italic.xml
+│   │   │   └── ic_format_underline.xml
+│   │   ├── format-bold
+│   │   │   └── ic_format_bold.xml
+│   │   ├── settings
+│   │   │   └── ic_settings.xml
+│   │   └── vulcan
+│   │       └── edu.lublin.eu.png
+│   ├── schemas
+│   │   └── pl.szczodrzynski.edziennik.data.db.AppDb
+│   │       ├── 100.json
+│   │       ├── 101.json
+│   │       ├── 97.json
+│   │       ├── 98.json
+│   │       └── 99.json
+│   └── src
+│       ├── debug
+│       │   └── res
+│       │       ├── mipmap-hdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-mdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-xhdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-xxhdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       └── mipmap-xxxhdpi
+│       │           ├── ic_launcher_v1.webp
+│       │           ├── ic_launcher_v1_foreground.webp
+│       │           ├── ic_launcher_v3.webp
+│       │           ├── ic_launcher_v3_foreground.webp
+│       │           ├── ic_launcher_v4.webp
+│       │           ├── ic_launcher_v4_foreground.webp
+│       │           ├── ic_launcher_v5.webp
+│       │           ├── ic_launcher_v5_foreground.webp
+│       │           ├── ic_launcher_v5_monochrome.webp
+│       │           ├── ic_splash_v1.webp
+│       │           ├── ic_splash_v3.webp
+│       │           ├── ic_splash_v4.webp
+│       │           └── ic_splash_v5.webp
+│       ├── main
+│       │   ├── AndroidManifest.xml
+│       │   ├── assets
+│       │   │   ├── fonts
+│       │   │   │   └── RobotoMono-Regular.ttf
+│       │   │   └── pl-changelog.html
+│       │   ├── cpp
+│       │   │   ├── CMakeLists.txt
+│       │   │   ├── aes.c
+│       │   │   ├── aes.h
+│       │   │   ├── base64.cpp
+│       │   │   └── szkolny-signing.cpp
+│       │   ├── java
+│       │   │   └── pl
+│       │   │       └── szczodrzynski
+│       │   │           └── edziennik
+│       │   │               ├── App.kt
+│       │   │               ├── Binding.kt
+│       │   │               ├── MainActivity.kt
+│       │   │               ├── MainActivityRequestHandler.kt
+│       │   │               ├── core
+│       │   │               │   ├── firebase
+│       │   │               │   │   ├── FirebaseSendException.kt
+│       │   │               │   │   ├── FirebaseService.kt
+│       │   │               │   │   ├── MyFirebaseService.kt
+│       │   │               │   │   ├── SzkolnyAppFirebase.kt
+│       │   │               │   │   ├── SzkolnyLibrusFirebase.kt
+│       │   │               │   │   ├── SzkolnyMobidziennikFirebase.kt
+│       │   │               │   │   └── SzkolnyVulcanFirebase.kt
+│       │   │               │   ├── manager
+│       │   │               │   │   ├── AttendanceManager.kt
+│       │   │               │   │   ├── AvailabilityManager.kt
+│       │   │               │   │   ├── BuildManager.kt
+│       │   │               │   │   ├── EventManager.kt
+│       │   │               │   │   ├── FirebaseManager.kt
+│       │   │               │   │   ├── GradesManager.kt
+│       │   │               │   │   ├── LoggingManager.kt
+│       │   │               │   │   ├── MessageManager.kt
+│       │   │               │   │   ├── NoteManager.kt
+│       │   │               │   │   ├── NotificationManager.kt
+│       │   │               │   │   ├── PermissionManager.kt
+│       │   │               │   │   ├── ShortcutManager.kt
+│       │   │               │   │   ├── TextStylingManager.kt
+│       │   │               │   │   ├── TimetableManager.kt
+│       │   │               │   │   ├── UiManager.kt
+│       │   │               │   │   ├── UpdateManager.kt
+│       │   │               │   │   └── UserActionManager.kt
+│       │   │               │   ├── network
+│       │   │               │   │   ├── DumbCookie.kt
+│       │   │               │   │   └── DumbCookieJar.kt
+│       │   │               │   ├── receiver
+│       │   │               │   │   ├── SzkolnyReceiver.kt
+│       │   │               │   │   └── UserPresentReceiver.java
+│       │   │               │   └── work
+│       │   │               │       ├── AppManagerDetectedEvent.kt
+│       │   │               │       ├── SyncWorker.kt
+│       │   │               │       ├── UpdateStateEvent.kt
+│       │   │               │       ├── UpdateWorker.kt
+│       │   │               │       └── WorkerUtils.kt
+│       │   │               ├── data
+│       │   │               │   ├── api
+│       │   │               │   │   ├── ApiService.kt
+│       │   │               │   │   ├── Constants.kt
+│       │   │               │   │   ├── EdziennikNotification.kt
+│       │   │               │   │   ├── EndpointChooser.kt
+│       │   │               │   │   ├── Errors.kt
+│       │   │               │   │   ├── Regexes.kt
+│       │   │               │   │   ├── edziennik
+│       │   │               │   │   │   ├── EdziennikTask.kt
+│       │   │               │   │   │   ├── ProfileArchiver.kt
+│       │   │               │   │   │   ├── demo
+│       │   │               │   │   │   │   └── Demo.kt
+│       │   │               │   │   │   ├── helper
+│       │   │               │   │   │   │   ├── DownloadAttachment.kt
+│       │   │               │   │   │   │   └── OneDriveDownloadAttachment.kt
+│       │   │               │   │   │   ├── librus
+│       │   │               │   │   │   │   ├── DataLibrus.kt
+│       │   │               │   │   │   │   ├── Librus.kt
+│       │   │               │   │   │   │   ├── LibrusFeatures.kt
+│       │   │               │   │   │   │   ├── LibrusRecaptchaHelper.kt
+│       │   │               │   │   │   │   ├── data
+│       │   │               │   │   │   │   │   ├── LibrusApi.kt
+│       │   │               │   │   │   │   │   ├── LibrusData.kt
+│       │   │               │   │   │   │   │   ├── LibrusMessages.kt
+│       │   │               │   │   │   │   │   ├── LibrusPortal.kt
+│       │   │               │   │   │   │   │   ├── LibrusSynergia.kt
+│       │   │               │   │   │   │   │   ├── api
+│       │   │               │   │   │   │   │   │   ├── LibrusApiAnnouncementMarkAsRead.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiAnnouncements.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiAttendanceTypes.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiAttendances.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiBehaviourGradeCategories.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiBehaviourGradeComments.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiBehaviourGrades.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiClasses.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiClassrooms.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiDescriptiveGradeCategories.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiDescriptiveGrades.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiEventTypes.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiEvents.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiGradeCategories.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiGradeComments.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiGrades.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiHomework.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiLessons.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiLuckyNumber.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiMe.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiNoticeTypes.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiNotices.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiPointGradeCategories.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiPointGrades.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiPtMeetings.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiPushConfig.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiSchools.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiSubjects.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiTeacherFreeDays.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiTemplate.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiTextGradeCategories.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiTextGrades.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiTimetables.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiUnits.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusApiUsers.kt
+│       │   │               │   │   │   │   │   │   └── LibrusApiVirtualClasses.kt
+│       │   │               │   │   │   │   │   ├── messages
+│       │   │               │   │   │   │   │   │   ├── LibrusMessagesGetAttachment.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusMessagesGetList.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusMessagesGetMessage.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusMessagesGetRecipientList.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusMessagesSendMessage.kt
+│       │   │               │   │   │   │   │   │   ├── LibrusMessagesTemplate.kt
+│       │   │               │   │   │   │   │   │   └── LibrusSandboxDownloadAttachment.kt
+│       │   │               │   │   │   │   │   └── synergia
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaGetAttachment.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaGetHomework.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaGetMessage.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaGetMessages.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaHomework.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaHomeworkGetAttachment.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaInfo.kt
+│       │   │               │   │   │   │   │       ├── LibrusSynergiaMarkAllAnnouncementsAsRead.kt
+│       │   │               │   │   │   │   │       └── LibrusSynergiaTemplate.kt
+│       │   │               │   │   │   │   ├── firstlogin
+│       │   │               │   │   │   │   │   └── LibrusFirstLogin.kt
+│       │   │               │   │   │   │   └── login
+│       │   │               │   │   │   │       ├── LibrusLogin.kt
+│       │   │               │   │   │   │       ├── LibrusLoginApi.kt
+│       │   │               │   │   │   │       ├── LibrusLoginMessages.kt
+│       │   │               │   │   │   │       ├── LibrusLoginPortal.kt
+│       │   │               │   │   │   │       ├── LibrusLoginSynergia.kt
+│       │   │               │   │   │   │       └── SynergiaTokenExtractor.kt
+│       │   │               │   │   │   ├── mobidziennik
+│       │   │               │   │   │   │   ├── DataMobidziennik.kt
+│       │   │               │   │   │   │   ├── Mobidziennik.kt
+│       │   │               │   │   │   │   ├── MobidziennikFeatures.kt
+│       │   │               │   │   │   │   ├── data
+│       │   │               │   │   │   │   │   ├── MobidziennikData.kt
+│       │   │               │   │   │   │   │   ├── MobidziennikWeb.kt
+│       │   │               │   │   │   │   │   ├── api
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApi.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiAttendance.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiDates.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiEvents.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiGradeCategories.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiGrades.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiHomework.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiLessons.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiNotices.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiStudent.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiSubjects.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiTeams.kt
+│       │   │               │   │   │   │   │   │   ├── MobidziennikApiTimetable.kt
+│       │   │               │   │   │   │   │   │   └── MobidziennikApiUsers.kt
+│       │   │               │   │   │   │   │   ├── api2
+│       │   │               │   │   │   │   │   │   └── MobidziennikApi2Main.kt
+│       │   │               │   │   │   │   │   └── web
+│       │   │               │   │   │   │   │       ├── MobidziennikLuckyNumberExtractor.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebAccountEmail.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebAttendance.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebCalendar.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebGetAttachment.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebGetEvent.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebGetHomework.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebGetMessage.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebGetRecipientList.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebGrades.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebHomework.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebMessagesAll.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebMessagesInbox.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebMessagesSent.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebNotices.kt
+│       │   │               │   │   │   │   │       ├── MobidziennikWebSendMessage.kt
+│       │   │               │   │   │   │   │       └── MobidziennikWebTimetable.kt
+│       │   │               │   │   │   │   ├── firstlogin
+│       │   │               │   │   │   │   │   └── MobidziennikFirstLogin.kt
+│       │   │               │   │   │   │   └── login
+│       │   │               │   │   │   │       ├── MobidziennikLogin.kt
+│       │   │               │   │   │   │       ├── MobidziennikLoginApi2.kt
+│       │   │               │   │   │   │       └── MobidziennikLoginWeb.kt
+│       │   │               │   │   │   ├── podlasie
+│       │   │               │   │   │   │   ├── DataPodlasie.kt
+│       │   │               │   │   │   │   ├── Podlasie.kt
+│       │   │               │   │   │   │   ├── PodlasieFeatures.kt
+│       │   │               │   │   │   │   ├── data
+│       │   │               │   │   │   │   │   ├── PodlasieApi.kt
+│       │   │               │   │   │   │   │   ├── PodlasieData.kt
+│       │   │               │   │   │   │   │   └── api
+│       │   │               │   │   │   │   │       ├── PodlasieApiEvents.kt
+│       │   │               │   │   │   │   │       ├── PodlasieApiFinalGrades.kt
+│       │   │               │   │   │   │   │       ├── PodlasieApiGrades.kt
+│       │   │               │   │   │   │   │       ├── PodlasieApiHomework.kt
+│       │   │               │   │   │   │   │       ├── PodlasieApiLuckyNumber.kt
+│       │   │               │   │   │   │   │       ├── PodlasieApiMain.kt
+│       │   │               │   │   │   │   │       ├── PodlasieApiTeachers.kt
+│       │   │               │   │   │   │   │       └── PodlasieApiTimetable.kt
+│       │   │               │   │   │   │   ├── firstlogin
+│       │   │               │   │   │   │   │   └── PodlasieFirstLogin.kt
+│       │   │               │   │   │   │   └── login
+│       │   │               │   │   │   │       ├── PodlasieLogin.kt
+│       │   │               │   │   │   │       └── PodlasieLoginApi.kt
+│       │   │               │   │   │   ├── template
+│       │   │               │   │   │   │   ├── DataTemplate.kt
+│       │   │               │   │   │   │   ├── Template.kt
+│       │   │               │   │   │   │   ├── TemplateFeatures.kt
+│       │   │               │   │   │   │   ├── data
+│       │   │               │   │   │   │   │   ├── TemplateApi.kt
+│       │   │               │   │   │   │   │   ├── TemplateData.kt
+│       │   │               │   │   │   │   │   ├── TemplateWeb.kt
+│       │   │               │   │   │   │   │   ├── api
+│       │   │               │   │   │   │   │   │   └── TemplateApiSample.kt
+│       │   │               │   │   │   │   │   └── web
+│       │   │               │   │   │   │   │       ├── TemplateWebSample.kt
+│       │   │               │   │   │   │   │       └── TemplateWebSample2.kt
+│       │   │               │   │   │   │   ├── firstlogin
+│       │   │               │   │   │   │   │   └── TemplateFirstLogin.kt
+│       │   │               │   │   │   │   └── login
+│       │   │               │   │   │   │       ├── TemplateLogin.kt
+│       │   │               │   │   │   │       ├── TemplateLoginApi.kt
+│       │   │               │   │   │   │       └── TemplateLoginWeb.kt
+│       │   │               │   │   │   ├── usos
+│       │   │               │   │   │   │   ├── DataUsos.kt
+│       │   │               │   │   │   │   ├── Usos.kt
+│       │   │               │   │   │   │   ├── UsosFeatures.kt
+│       │   │               │   │   │   │   ├── data
+│       │   │               │   │   │   │   │   ├── UsosApi.kt
+│       │   │               │   │   │   │   │   ├── UsosData.kt
+│       │   │               │   │   │   │   │   └── api
+│       │   │               │   │   │   │   │       ├── UsosApiCourses.kt
+│       │   │               │   │   │   │   │       ├── UsosApiTerms.kt
+│       │   │               │   │   │   │   │       ├── UsosApiTimetable.kt
+│       │   │               │   │   │   │   │       └── UsosApiUser.kt
+│       │   │               │   │   │   │   ├── firstlogin
+│       │   │               │   │   │   │   │   └── UsosFirstLogin.kt
+│       │   │               │   │   │   │   └── login
+│       │   │               │   │   │   │       ├── UsosLogin.kt
+│       │   │               │   │   │   │       └── UsosLoginApi.kt
+│       │   │               │   │   │   └── vulcan
+│       │   │               │   │   │       ├── DataVulcan.kt
+│       │   │               │   │   │       ├── Vulcan.kt
+│       │   │               │   │   │       ├── VulcanFeatures.kt
+│       │   │               │   │   │       ├── data
+│       │   │               │   │   │       │   ├── VulcanData.kt
+│       │   │               │   │   │       │   ├── VulcanHebe.kt
+│       │   │               │   │   │       │   ├── VulcanWebMain.kt
+│       │   │               │   │   │       │   ├── hebe
+│       │   │               │   │   │       │   │   ├── HebeFilterType.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeAddressbook.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeAddressbook2.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeAttendance.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeExams.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeGradeSummary.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeGrades.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeHomework.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeLuckyNumber.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeMain.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeMessageBoxes.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeMessages.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeMessagesChangeStatus.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeNotices.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebePushConfig.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeSendMessage.kt
+│       │   │               │   │   │       │   │   ├── VulcanHebeTeachers.kt
+│       │   │               │   │   │       │   │   └── VulcanHebeTimetable.kt
+│       │   │               │   │   │       │   └── web
+│       │   │               │   │   │       │       ├── HomepageTile.kt
+│       │   │               │   │   │       │       └── VulcanWebLuckyNumber.kt
+│       │   │               │   │   │       ├── firstlogin
+│       │   │               │   │   │       │   └── VulcanFirstLogin.kt
+│       │   │               │   │   │       └── login
+│       │   │               │   │   │           ├── CufsCertificate.kt
+│       │   │               │   │   │           ├── VulcanLogin.kt
+│       │   │               │   │   │           ├── VulcanLoginHebe.kt
+│       │   │               │   │   │           └── VulcanLoginWebMain.kt
+│       │   │               │   │   ├── events
+│       │   │               │   │   │   ├── AnnouncementGetEvent.kt
+│       │   │               │   │   │   ├── ApiTaskAllFinishedEvent.kt
+│       │   │               │   │   │   ├── ApiTaskErrorEvent.kt
+│       │   │               │   │   │   ├── ApiTaskFinishedEvent.kt
+│       │   │               │   │   │   ├── ApiTaskProgressEvent.kt
+│       │   │               │   │   │   ├── ApiTaskStartedEvent.kt
+│       │   │               │   │   │   ├── AttachmentGetEvent.kt
+│       │   │               │   │   │   ├── EventGetEvent.kt
+│       │   │               │   │   │   ├── FeedbackMessageEvent.kt
+│       │   │               │   │   │   ├── FirstLoginFinishedEvent.kt
+│       │   │               │   │   │   ├── MessageGetEvent.kt
+│       │   │               │   │   │   ├── MessageSentEvent.kt
+│       │   │               │   │   │   ├── ProfileListEmptyEvent.kt
+│       │   │               │   │   │   ├── RecipientListGetEvent.kt
+│       │   │               │   │   │   ├── RegisterAvailabilityEvent.kt
+│       │   │               │   │   │   ├── UserActionRequiredEvent.kt
+│       │   │               │   │   │   └── requests
+│       │   │               │   │   │       ├── ServiceCloseRequest.kt
+│       │   │               │   │   │       └── TaskCancelRequest.kt
+│       │   │               │   │   ├── interfaces
+│       │   │               │   │   │   ├── EdziennikCallback.kt
+│       │   │               │   │   │   ├── EdziennikInterface.kt
+│       │   │               │   │   │   └── EndpointCallback.kt
+│       │   │               │   │   ├── models
+│       │   │               │   │   │   ├── ApiError.kt
+│       │   │               │   │   │   ├── Data.kt
+│       │   │               │   │   │   ├── DataRemoveModel.kt
+│       │   │               │   │   │   └── Feature.kt
+│       │   │               │   │   ├── szkolny
+│       │   │               │   │   │   ├── SzkolnyApi.kt
+│       │   │               │   │   │   ├── SzkolnyApiException.kt
+│       │   │               │   │   │   ├── SzkolnyService.kt
+│       │   │               │   │   │   ├── adapter
+│       │   │               │   │   │   │   ├── DateAdapter.kt
+│       │   │               │   │   │   │   └── TimeAdapter.kt
+│       │   │               │   │   │   ├── interceptor
+│       │   │               │   │   │   │   ├── ApiCacheInterceptor.kt
+│       │   │               │   │   │   │   ├── SignatureInterceptor.kt
+│       │   │               │   │   │   │   └── Signing.kt
+│       │   │               │   │   │   ├── request
+│       │   │               │   │   │   │   ├── AppUserRequest.kt
+│       │   │               │   │   │   │   ├── Device.kt
+│       │   │               │   │   │   │   ├── ErrorReportRequest.kt
+│       │   │               │   │   │   │   ├── EventShareRequest.kt
+│       │   │               │   │   │   │   ├── FeedbackMessageRequest.kt
+│       │   │               │   │   │   │   ├── NoteShareRequest.kt
+│       │   │               │   │   │   │   ├── ServerSyncRequest.kt
+│       │   │               │   │   │   │   └── WebPushRequest.kt
+│       │   │               │   │   │   └── response
+│       │   │               │   │   │       ├── ApiResponse.kt
+│       │   │               │   │   │       ├── ContributorsResponse.kt
+│       │   │               │   │   │       ├── FeedbackMessageResponse.kt
+│       │   │               │   │   │       ├── RegisterAvailabilityStatus.kt
+│       │   │               │   │   │       ├── ServerSyncResponse.kt
+│       │   │               │   │   │       ├── UpdateResponse.kt
+│       │   │               │   │   │       └── WebPushResponse.kt
+│       │   │               │   │   └── task
+│       │   │               │   │       ├── AppSync.kt
+│       │   │               │   │       ├── ErrorReportTask.kt
+│       │   │               │   │       ├── IApiTask.kt
+│       │   │               │   │       ├── Notifications.kt
+│       │   │               │   │       ├── PostNotifications.kt
+│       │   │               │   │       └── SzkolnyTask.kt
+│       │   │               │   ├── config
+│       │   │               │   │   ├── AppData.kt
+│       │   │               │   │   ├── BaseConfig.kt
+│       │   │               │   │   ├── BaseMigration.kt
+│       │   │               │   │   ├── Config.kt
+│       │   │               │   │   ├── Delegate.kt
+│       │   │               │   │   ├── ProfileConfig.kt
+│       │   │               │   │   └── migration
+│       │   │               │   │       ├── ConfigMigration11.kt
+│       │   │               │   │       ├── ConfigMigration14.kt
+│       │   │               │   │       ├── ProfileConfigMigration2.kt
+│       │   │               │   │       ├── ProfileConfigMigration3.kt
+│       │   │               │   │       ├── ProfileConfigMigration4.kt
+│       │   │               │   │       ├── ProfileConfigMigration5.kt
+│       │   │               │   │       └── ProfileConfigMigration6.kt
+│       │   │               │   ├── db
+│       │   │               │   │   ├── AppDb.kt
+│       │   │               │   │   ├── converter
+│       │   │               │   │   │   ├── ConverterDate.kt
+│       │   │               │   │   │   ├── ConverterDateInt.kt
+│       │   │               │   │   │   ├── ConverterEnums.kt
+│       │   │               │   │   │   ├── ConverterJsonObject.kt
+│       │   │               │   │   │   ├── ConverterListLong.kt
+│       │   │               │   │   │   ├── ConverterListString.kt
+│       │   │               │   │   │   └── ConverterTime.kt
+│       │   │               │   │   ├── dao
+│       │   │               │   │   │   ├── AnnouncementDao.kt
+│       │   │               │   │   │   ├── AttendanceDao.kt
+│       │   │               │   │   │   ├── AttendanceTypeDao.kt
+│       │   │               │   │   │   ├── BaseDao.kt
+│       │   │               │   │   │   ├── ClassroomDao.kt
+│       │   │               │   │   │   ├── ConfigDao.kt
+│       │   │               │   │   │   ├── EndpointTimerDao.kt
+│       │   │               │   │   │   ├── EventDao.kt
+│       │   │               │   │   │   ├── EventTypeDao.kt
+│       │   │               │   │   │   ├── FeedbackMessageDao.kt
+│       │   │               │   │   │   ├── GradeCategoryDao.java
+│       │   │               │   │   │   ├── GradeDao.kt
+│       │   │               │   │   │   ├── LessonRangeDao.kt
+│       │   │               │   │   │   ├── LibrusLessonDao.kt
+│       │   │               │   │   │   ├── LogDao.kt
+│       │   │               │   │   │   ├── LoginStoreDao.java
+│       │   │               │   │   │   ├── LuckyNumberDao.kt
+│       │   │               │   │   │   ├── MessageDao.kt
+│       │   │               │   │   │   ├── MessageRecipientDao.java
+│       │   │               │   │   │   ├── MetadataDao.java
+│       │   │               │   │   │   ├── NoteDao.kt
+│       │   │               │   │   │   ├── NoticeDao.kt
+│       │   │               │   │   │   ├── NoticeTypeDao.kt
+│       │   │               │   │   │   ├── NotificationDao.kt
+│       │   │               │   │   │   ├── ProfileDao.kt
+│       │   │               │   │   │   ├── SubjectDao.java
+│       │   │               │   │   │   ├── TeacherAbsenceDao.kt
+│       │   │               │   │   │   ├── TeacherAbsenceTypeDao.kt
+│       │   │               │   │   │   ├── TeacherDao.kt
+│       │   │               │   │   │   ├── TeamDao.java
+│       │   │               │   │   │   ├── TimetableDao.kt
+│       │   │               │   │   │   └── TimetableManualDao.kt
+│       │   │               │   │   ├── entity
+│       │   │               │   │   │   ├── Announcement.kt
+│       │   │               │   │   │   ├── Attendance.kt
+│       │   │               │   │   │   ├── AttendanceType.kt
+│       │   │               │   │   │   ├── Classroom.kt
+│       │   │               │   │   │   ├── ConfigEntry.kt
+│       │   │               │   │   │   ├── EndpointTimer.kt
+│       │   │               │   │   │   ├── Event.kt
+│       │   │               │   │   │   ├── EventType.kt
+│       │   │               │   │   │   ├── FeedbackMessage.kt
+│       │   │               │   │   │   ├── Grade.kt
+│       │   │               │   │   │   ├── GradeCategory.java
+│       │   │               │   │   │   ├── Keepable.kt
+│       │   │               │   │   │   ├── Lesson.kt
+│       │   │               │   │   │   ├── LessonRange.kt
+│       │   │               │   │   │   ├── LibrusLesson.kt
+│       │   │               │   │   │   ├── LogEntry.kt
+│       │   │               │   │   │   ├── LoginStore.kt
+│       │   │               │   │   │   ├── LuckyNumber.kt
+│       │   │               │   │   │   ├── Message.kt
+│       │   │               │   │   │   ├── MessageRecipient.java
+│       │   │               │   │   │   ├── Metadata.java
+│       │   │               │   │   │   ├── Note.kt
+│       │   │               │   │   │   ├── Noteable.kt
+│       │   │               │   │   │   ├── Notice.kt
+│       │   │               │   │   │   ├── NoticeType.kt
+│       │   │               │   │   │   ├── Notification.kt
+│       │   │               │   │   │   ├── Profile.kt
+│       │   │               │   │   │   ├── Subject.java
+│       │   │               │   │   │   ├── Teacher.kt
+│       │   │               │   │   │   ├── TeacherAbsence.kt
+│       │   │               │   │   │   ├── TeacherAbsenceType.kt
+│       │   │               │   │   │   ├── Team.java
+│       │   │               │   │   │   └── TimetableManual.kt
+│       │   │               │   │   ├── full
+│       │   │               │   │   │   ├── AnnouncementFull.kt
+│       │   │               │   │   │   ├── AttendanceFull.kt
+│       │   │               │   │   │   ├── EventFull.kt
+│       │   │               │   │   │   ├── GradeFull.kt
+│       │   │               │   │   │   ├── LessonFull.kt
+│       │   │               │   │   │   ├── LuckyNumberFull.kt
+│       │   │               │   │   │   ├── MessageFull.kt
+│       │   │               │   │   │   ├── MessageRecipientFull.kt
+│       │   │               │   │   │   ├── NoticeFull.kt
+│       │   │               │   │   │   └── TeacherAbsenceFull.kt
+│       │   │               │   │   └── migration
+│       │   │               │   │       ├── Migration100.kt
+│       │   │               │   │       ├── Migration101.kt
+│       │   │               │   │       ├── Migration12.kt
+│       │   │               │   │       ├── Migration13.kt
+│       │   │               │   │       ├── Migration14.kt
+│       │   │               │   │       ├── Migration15.kt
+│       │   │               │   │       ├── Migration16.kt
+│       │   │               │   │       ├── Migration17.kt
+│       │   │               │   │       ├── Migration18.kt
+│       │   │               │   │       ├── Migration19.kt
+│       │   │               │   │       ├── Migration20.kt
+│       │   │               │   │       ├── Migration21.kt
+│       │   │               │   │       ├── Migration22.kt
+│       │   │               │   │       ├── Migration23.kt
+│       │   │               │   │       ├── Migration24.kt
+│       │   │               │   │       ├── Migration25.kt
+│       │   │               │   │       ├── Migration26.kt
+│       │   │               │   │       ├── Migration27.kt
+│       │   │               │   │       ├── Migration28.kt
+│       │   │               │   │       ├── Migration29.kt
+│       │   │               │   │       ├── Migration30.kt
+│       │   │               │   │       ├── Migration31.kt
+│       │   │               │   │       ├── Migration32.kt
+│       │   │               │   │       ├── Migration33.kt
+│       │   │               │   │       ├── Migration34.kt
+│       │   │               │   │       ├── Migration35.kt
+│       │   │               │   │       ├── Migration36.kt
+│       │   │               │   │       ├── Migration37.kt
+│       │   │               │   │       ├── Migration38.kt
+│       │   │               │   │       ├── Migration39.kt
+│       │   │               │   │       ├── Migration40.kt
+│       │   │               │   │       ├── Migration41.kt
+│       │   │               │   │       ├── Migration42.kt
+│       │   │               │   │       ├── Migration43.kt
+│       │   │               │   │       ├── Migration44.kt
+│       │   │               │   │       ├── Migration45.kt
+│       │   │               │   │       ├── Migration46.kt
+│       │   │               │   │       ├── Migration47.kt
+│       │   │               │   │       ├── Migration48.kt
+│       │   │               │   │       ├── Migration49.kt
+│       │   │               │   │       ├── Migration50.kt
+│       │   │               │   │       ├── Migration51.kt
+│       │   │               │   │       ├── Migration52.kt
+│       │   │               │   │       ├── Migration53.kt
+│       │   │               │   │       ├── Migration54.kt
+│       │   │               │   │       ├── Migration55.kt
+│       │   │               │   │       ├── Migration56.kt
+│       │   │               │   │       ├── Migration57.kt
+│       │   │               │   │       ├── Migration58.kt
+│       │   │               │   │       ├── Migration59.kt
+│       │   │               │   │       ├── Migration60.kt
+│       │   │               │   │       ├── Migration61.kt
+│       │   │               │   │       ├── Migration62.kt
+│       │   │               │   │       ├── Migration63.kt
+│       │   │               │   │       ├── Migration64.kt
+│       │   │               │   │       ├── Migration65.kt
+│       │   │               │   │       ├── Migration66.kt
+│       │   │               │   │       ├── Migration67.kt
+│       │   │               │   │       ├── Migration68.kt
+│       │   │               │   │       ├── Migration69.kt
+│       │   │               │   │       ├── Migration70.kt
+│       │   │               │   │       ├── Migration71.kt
+│       │   │               │   │       ├── Migration72.kt
+│       │   │               │   │       ├── Migration73.kt
+│       │   │               │   │       ├── Migration74.kt
+│       │   │               │   │       ├── Migration75.kt
+│       │   │               │   │       ├── Migration76.kt
+│       │   │               │   │       ├── Migration77.kt
+│       │   │               │   │       ├── Migration78.kt
+│       │   │               │   │       ├── Migration79.kt
+│       │   │               │   │       ├── Migration80.kt
+│       │   │               │   │       ├── Migration81.kt
+│       │   │               │   │       ├── Migration82.kt
+│       │   │               │   │       ├── Migration83.kt
+│       │   │               │   │       ├── Migration84.kt
+│       │   │               │   │       ├── Migration85.kt
+│       │   │               │   │       ├── Migration86.kt
+│       │   │               │   │       ├── Migration87.kt
+│       │   │               │   │       ├── Migration88.kt
+│       │   │               │   │       ├── Migration89.kt
+│       │   │               │   │       ├── Migration90.kt
+│       │   │               │   │       ├── Migration91.kt
+│       │   │               │   │       ├── Migration92.kt
+│       │   │               │   │       ├── Migration93.kt
+│       │   │               │   │       ├── Migration94.kt
+│       │   │               │   │       ├── Migration95.kt
+│       │   │               │   │       ├── Migration96.kt
+│       │   │               │   │       ├── Migration97.kt
+│       │   │               │   │       ├── Migration98.kt
+│       │   │               │   │       └── Migration99.kt
+│       │   │               │   └── enums
+│       │   │               │       ├── FeatureType.kt
+│       │   │               │       ├── LoginMethod.kt
+│       │   │               │       ├── LoginMode.kt
+│       │   │               │       ├── LoginType.kt
+│       │   │               │       ├── LoginTypeFeatures.kt
+│       │   │               │       ├── MetadataType.kt
+│       │   │               │       ├── NavTarget.kt
+│       │   │               │       ├── NavTargetLocation.kt
+│       │   │               │       ├── NotificationType.kt
+│       │   │               │       ├── SchoolType.kt
+│       │   │               │       └── Theme.kt
+│       │   │               ├── ext
+│       │   │               │   ├── ArrayExtensions.kt
+│       │   │               │   ├── BundleExtensions.kt
+│       │   │               │   ├── ContextExtensions.kt
+│       │   │               │   ├── CryptoExtensions.kt
+│       │   │               │   ├── DataExtensions.kt
+│       │   │               │   ├── DialogExtensions.kt
+│       │   │               │   ├── EnumExtensions.kt
+│       │   │               │   ├── GraphicsExtensions.kt
+│       │   │               │   ├── JsonExtensions.kt
+│       │   │               │   ├── MiscExtensions.kt
+│       │   │               │   ├── NetworkExtensions.kt
+│       │   │               │   ├── ProfileExtensions.kt
+│       │   │               │   ├── ReflectionExtensions.kt
+│       │   │               │   ├── TextExtensions.kt
+│       │   │               │   ├── TimeExtensions.kt
+│       │   │               │   └── ViewExtensions.kt
+│       │   │               ├── ui
+│       │   │               │   ├── agenda
+│       │   │               │   │   ├── AgendaFragment.kt
+│       │   │               │   │   ├── AgendaFragmentDefault.kt
+│       │   │               │   │   ├── BaseEvent.kt
+│       │   │               │   │   ├── DayDialog.kt
+│       │   │               │   │   ├── event
+│       │   │               │   │   │   ├── AgendaEvent.kt
+│       │   │               │   │   │   ├── AgendaEventGroup.kt
+│       │   │               │   │   │   ├── AgendaEventGroupRenderer.kt
+│       │   │               │   │   │   └── AgendaEventRenderer.kt
+│       │   │               │   │   ├── lessonchanges
+│       │   │               │   │   │   ├── LessonChangesAdapter.kt
+│       │   │               │   │   │   ├── LessonChangesDialog.kt
+│       │   │               │   │   │   ├── LessonChangesEvent.kt
+│       │   │               │   │   │   └── LessonChangesEventRenderer.kt
+│       │   │               │   │   └── teacherabsence
+│       │   │               │   │       ├── TeacherAbsenceAdapter.kt
+│       │   │               │   │       ├── TeacherAbsenceDialog.kt
+│       │   │               │   │       ├── TeacherAbsenceEvent.kt
+│       │   │               │   │       └── TeacherAbsenceEventRenderer.kt
+│       │   │               │   ├── announcements
+│       │   │               │   │   ├── AnnouncementsAdapter.java
+│       │   │               │   │   └── AnnouncementsFragment.java
+│       │   │               │   ├── attendance
+│       │   │               │   │   ├── AttendanceAdapter.kt
+│       │   │               │   │   ├── AttendanceBar.kt
+│       │   │               │   │   ├── AttendanceDetailsDialog.kt
+│       │   │               │   │   ├── AttendanceFragment.kt
+│       │   │               │   │   ├── AttendanceListFragment.kt
+│       │   │               │   │   ├── AttendanceSummaryFragment.kt
+│       │   │               │   │   ├── AttendanceView.kt
+│       │   │               │   │   ├── models
+│       │   │               │   │   │   ├── AttendanceCount.kt
+│       │   │               │   │   │   ├── AttendanceDayRange.kt
+│       │   │               │   │   │   ├── AttendanceEmpty.kt
+│       │   │               │   │   │   ├── AttendanceMonth.kt
+│       │   │               │   │   │   ├── AttendanceSubject.kt
+│       │   │               │   │   │   └── AttendanceTypeGroup.kt
+│       │   │               │   │   └── viewholder
+│       │   │               │   │       ├── AttendanceViewHolder.kt
+│       │   │               │   │       ├── DayRangeViewHolder.kt
+│       │   │               │   │       ├── EmptyViewHolder.kt
+│       │   │               │   │       ├── MonthViewHolder.kt
+│       │   │               │   │       ├── SubjectViewHolder.kt
+│       │   │               │   │       └── TypeViewHolder.kt
+│       │   │               │   ├── base
+│       │   │               │   │   ├── dialog
+│       │   │               │   │   │   ├── BaseDialog.kt
+│       │   │               │   │   │   ├── BindingDialog.kt
+│       │   │               │   │   │   ├── ConfigDialog.kt
+│       │   │               │   │   │   ├── SimpleDialog.kt
+│       │   │               │   │   │   └── ViewDialog.kt
+│       │   │               │   │   ├── fragment
+│       │   │               │   │   │   ├── ActivityUtil.kt
+│       │   │               │   │   │   ├── BaseFragment.kt
+│       │   │               │   │   │   ├── PagerFragment.kt
+│       │   │               │   │   │   └── ScrollUtil.kt
+│       │   │               │   │   └── views
+│       │   │               │   │       ├── AttachmentAdapter.kt
+│       │   │               │   │       ├── AttachmentsView.kt
+│       │   │               │   │       ├── DateDropdown.kt
+│       │   │               │   │       ├── EventTypeDropdown.kt
+│       │   │               │   │       ├── IconicsMaterialButton.kt
+│       │   │               │   │       ├── RecyclerTabLayout.kt
+│       │   │               │   │       ├── SubjectDropdown.kt
+│       │   │               │   │       ├── TeacherDropdown.kt
+│       │   │               │   │       ├── TeamDropdown.kt
+│       │   │               │   │       └── TimeDropdown.kt
+│       │   │               │   ├── behaviour
+│       │   │               │   │   ├── BehaviourFragment.kt
+│       │   │               │   │   └── NoticesAdapter.kt
+│       │   │               │   ├── captcha
+│       │   │               │   │   ├── RecaptchaDialog.kt
+│       │   │               │   │   └── RecaptchaPromptDialog.kt
+│       │   │               │   ├── debug
+│       │   │               │   │   ├── DebugFragment.java
+│       │   │               │   │   ├── LabFragment.kt
+│       │   │               │   │   ├── LabJsonAdapter.kt
+│       │   │               │   │   ├── LabPageFragment.kt
+│       │   │               │   │   ├── LabPlaygroundFragment.kt
+│       │   │               │   │   ├── LabProfileFragment.kt
+│       │   │               │   │   ├── models
+│       │   │               │   │   │   ├── LabJsonArray.kt
+│       │   │               │   │   │   ├── LabJsonElement.kt
+│       │   │               │   │   │   └── LabJsonObject.kt
+│       │   │               │   │   └── viewholder
+│       │   │               │   │       ├── JsonArrayViewHolder.kt
+│       │   │               │   │       ├── JsonElementViewHolder.kt
+│       │   │               │   │       ├── JsonObjectViewHolder.kt
+│       │   │               │   │       └── JsonSubObjectViewHolder.kt
+│       │   │               │   ├── dialogs
+│       │   │               │   │   ├── BellSyncDialog.kt
+│       │   │               │   │   ├── BellSyncTimeChooseDialog.kt
+│       │   │               │   │   ├── ChangelogDialog.kt
+│       │   │               │   │   ├── DevModeDialog.kt
+│       │   │               │   │   ├── ErrorDetailsDialog.kt
+│       │   │               │   │   ├── ProfileRemoveDialog.kt
+│       │   │               │   │   ├── QrScannerDialog.kt
+│       │   │               │   │   ├── RestartDialog.kt
+│       │   │               │   │   ├── StyledTextDialog.kt
+│       │   │               │   │   ├── settings
+│       │   │               │   │   │   ├── AgendaConfigDialog.kt
+│       │   │               │   │   │   ├── AppLanguageDialog.kt
+│       │   │               │   │   │   ├── AttendanceConfigDialog.kt
+│       │   │               │   │   │   ├── BellSyncConfigDialog.kt
+│       │   │               │   │   │   ├── GradesConfigDialog.kt
+│       │   │               │   │   │   ├── MessagesConfigDialog.kt
+│       │   │               │   │   │   ├── MiniMenuConfigDialog.kt
+│       │   │               │   │   │   ├── NotificationFilterDialog.kt
+│       │   │               │   │   │   ├── ProfileConfigDialog.kt
+│       │   │               │   │   │   ├── QuietHoursConfigDialog.kt
+│       │   │               │   │   │   ├── RegistrationConfigDialog.kt
+│       │   │               │   │   │   ├── StudentNumberDialog.kt
+│       │   │               │   │   │   ├── SyncIntervalDialog.kt
+│       │   │               │   │   │   ├── ThemeChooserDialog.kt
+│       │   │               │   │   │   └── TimetableConfigDialog.kt
+│       │   │               │   │   └── sync
+│       │   │               │   │       ├── RegisterUnavailableDialog.kt
+│       │   │               │   │       ├── ServerMessageDialog.kt
+│       │   │               │   │       ├── SyncViewListDialog.kt
+│       │   │               │   │       ├── UpdateAvailableDialog.kt
+│       │   │               │   │       └── UpdateProgressDialog.kt
+│       │   │               │   ├── event
+│       │   │               │   │   ├── EventDetailsDialog.kt
+│       │   │               │   │   ├── EventListAdapter.kt
+│       │   │               │   │   ├── EventManualDialog.kt
+│       │   │               │   │   └── EventViewHolder.kt
+│       │   │               │   ├── feedback
+│       │   │               │   │   ├── FeedbackActivity.kt
+│       │   │               │   │   └── FeedbackFragment.kt
+│       │   │               │   ├── grades
+│       │   │               │   │   ├── GradeDetailsDialog.kt
+│       │   │               │   │   ├── GradeView.kt
+│       │   │               │   │   ├── GradesAdapter.kt
+│       │   │               │   │   ├── GradesListFragment.kt
+│       │   │               │   │   ├── editor
+│       │   │               │   │   │   ├── GradesEditorAdapter.kt
+│       │   │               │   │   │   └── GradesEditorFragment.kt
+│       │   │               │   │   ├── models
+│       │   │               │   │   │   ├── ExpandableItemModel.kt
+│       │   │               │   │   │   ├── GradesAverages.kt
+│       │   │               │   │   │   ├── GradesEmpty.kt
+│       │   │               │   │   │   ├── GradesSemester.kt
+│       │   │               │   │   │   ├── GradesStats.kt
+│       │   │               │   │   │   ├── GradesSubject.kt
+│       │   │               │   │   │   └── GradesUnknownSubject.kt
+│       │   │               │   │   └── viewholder
+│       │   │               │   │       ├── BindableViewHolder.kt
+│       │   │               │   │       ├── EmptyViewHolder.kt
+│       │   │               │   │       ├── GradeViewHolder.kt
+│       │   │               │   │       ├── SemesterViewHolder.kt
+│       │   │               │   │       ├── StatsViewHolder.kt
+│       │   │               │   │       ├── SubjectViewHolder.kt
+│       │   │               │   │       └── UnknownSubjectViewHolder.kt
+│       │   │               │   ├── home
+│       │   │               │   │   ├── CardItemTouchHelperCallback.kt
+│       │   │               │   │   ├── CounterActivity.kt
+│       │   │               │   │   ├── HomeCard.kt
+│       │   │               │   │   ├── HomeCardAdapter.kt
+│       │   │               │   │   ├── HomeCardModel.kt
+│       │   │               │   │   ├── HomeConfigDialog.kt
+│       │   │               │   │   ├── HomeDummyCard.kt
+│       │   │               │   │   ├── HomeFragment.kt
+│       │   │               │   │   └── cards
+│       │   │               │   │       ├── HomeArchiveCard.kt
+│       │   │               │   │       ├── HomeAvailabilityCard.kt
+│       │   │               │   │       ├── HomeDebugCard.kt
+│       │   │               │   │       ├── HomeEventsCard.kt
+│       │   │               │   │       ├── HomeGradesCard.kt
+│       │   │               │   │       ├── HomeLuckyNumberCard.kt
+│       │   │               │   │       ├── HomeNotesCard.kt
+│       │   │               │   │       ├── HomeTemplateCard.kt
+│       │   │               │   │       └── HomeTimetableCard.kt
+│       │   │               │   ├── homework
+│       │   │               │   │   ├── HomeworkDate.kt
+│       │   │               │   │   ├── HomeworkFragment.kt
+│       │   │               │   │   └── HomeworkListFragment.kt
+│       │   │               │   ├── intro
+│       │   │               │   │   ├── ChangelogIntroActivity.java
+│       │   │               │   │   └── FragmentSlideMod.java
+│       │   │               │   ├── login
+│       │   │               │   │   ├── LoginActivity.kt
+│       │   │               │   │   ├── LoginChooserAdapter.kt
+│       │   │               │   │   ├── LoginChooserFragment.kt
+│       │   │               │   │   ├── LoginEggsFragment.kt
+│       │   │               │   │   ├── LoginFinishFragment.kt
+│       │   │               │   │   ├── LoginFormFragment.kt
+│       │   │               │   │   ├── LoginInfo.kt
+│       │   │               │   │   ├── LoginPlatformAdapter.kt
+│       │   │               │   │   ├── LoginPlatformListFragment.kt
+│       │   │               │   │   ├── LoginPrizeFragment.kt
+│       │   │               │   │   ├── LoginProgressFragment.kt
+│       │   │               │   │   ├── LoginSummaryAdapter.kt
+│       │   │               │   │   ├── LoginSummaryFragment.kt
+│       │   │               │   │   ├── LoginSyncErrorFragment.kt
+│       │   │               │   │   ├── LoginSyncFragment.kt
+│       │   │               │   │   ├── oauth
+│       │   │               │   │   │   ├── OAuthLoginActivity.kt
+│       │   │               │   │   │   └── OAuthLoginResult.kt
+│       │   │               │   │   ├── qr
+│       │   │               │   │   │   ├── LoginLibrusQrDecoder.kt
+│       │   │               │   │   │   ├── LoginQrDecoder.kt
+│       │   │               │   │   │   └── LoginVulcanQrDecoder.kt
+│       │   │               │   │   ├── recaptcha
+│       │   │               │   │   │   ├── RecaptchaActivity.kt
+│       │   │               │   │   │   └── RecaptchaResult.kt
+│       │   │               │   │   └── viewholder
+│       │   │               │   │       ├── ModeViewHolder.kt
+│       │   │               │   │       ├── PlatformViewHolder.kt
+│       │   │               │   │       └── RegisterViewHolder.kt
+│       │   │               │   ├── main
+│       │   │               │   │   ├── BuildInvalidActivity.kt
+│       │   │               │   │   ├── CrashActivity.kt
+│       │   │               │   │   ├── ErrorSnackbar.kt
+│       │   │               │   │   └── MainSnackbar.kt
+│       │   │               │   ├── messages
+│       │   │               │   │   ├── MessagesUtils.kt
+│       │   │               │   │   ├── compose
+│       │   │               │   │   │   ├── MessagesComposeChipCreator.kt
+│       │   │               │   │   │   ├── MessagesComposeChipTokenizer.kt
+│       │   │               │   │   │   ├── MessagesComposeFragment.kt
+│       │   │               │   │   │   └── MessagesComposeSuggestionAdapter.kt
+│       │   │               │   │   ├── list
+│       │   │               │   │   │   ├── MessageViewHolder.kt
+│       │   │               │   │   │   ├── MessagesAdapter.kt
+│       │   │               │   │   │   ├── MessagesFragment.kt
+│       │   │               │   │   │   └── MessagesListFragment.kt
+│       │   │               │   │   └── single
+│       │   │               │   │       └── MessageFragment.kt
+│       │   │               │   ├── notes
+│       │   │               │   │   ├── NoteCategoryViewHolder.kt
+│       │   │               │   │   ├── NoteDetailsDialog.kt
+│       │   │               │   │   ├── NoteEditorDialog.kt
+│       │   │               │   │   ├── NoteListAdapter.kt
+│       │   │               │   │   ├── NoteListDialog.kt
+│       │   │               │   │   ├── NoteViewHolder.kt
+│       │   │               │   │   ├── NotesExtensions.kt
+│       │   │               │   │   └── NotesFragment.kt
+│       │   │               │   ├── notifications
+│       │   │               │   │   ├── NotificationsAdapter.kt
+│       │   │               │   │   └── NotificationsListFragment.kt
+│       │   │               │   ├── search
+│       │   │               │   │   ├── SearchField.kt
+│       │   │               │   │   ├── SearchFilter.kt
+│       │   │               │   │   ├── SearchTextWatcher.kt
+│       │   │               │   │   ├── SearchViewHolder.kt
+│       │   │               │   │   ├── Searchable.kt
+│       │   │               │   │   └── SearchableAdapter.kt
+│       │   │               │   ├── settings
+│       │   │               │   │   ├── MaterialAboutProfileItem.kt
+│       │   │               │   │   ├── ProfileManagerFragment.kt
+│       │   │               │   │   ├── SettingsCard.kt
+│       │   │               │   │   ├── SettingsFragment.kt
+│       │   │               │   │   ├── SettingsLicenseActivity.kt
+│       │   │               │   │   ├── SettingsUtil.kt
+│       │   │               │   │   ├── SettingsViewTypeManager.kt
+│       │   │               │   │   ├── cards
+│       │   │               │   │   │   ├── SettingsAboutCard.kt
+│       │   │               │   │   │   ├── SettingsProfileCard.kt
+│       │   │               │   │   │   ├── SettingsRegisterCard.kt
+│       │   │               │   │   │   ├── SettingsSyncCard.kt
+│       │   │               │   │   │   └── SettingsThemeCard.kt
+│       │   │               │   │   └── contributors
+│       │   │               │   │       ├── ContributorsAdapter.kt
+│       │   │               │   │       ├── ContributorsFragment.kt
+│       │   │               │   │       └── ContributorsListFragment.kt
+│       │   │               │   ├── teachers
+│       │   │               │   │   ├── TeachersAdapter.kt
+│       │   │               │   │   └── TeachersListFragment.kt
+│       │   │               │   ├── template
+│       │   │               │   │   ├── TemplateAdapter.kt
+│       │   │               │   │   ├── TemplateDialog.kt
+│       │   │               │   │   ├── TemplateFragment.kt
+│       │   │               │   │   ├── TemplateListFragment.kt
+│       │   │               │   │   ├── TemplateListPageFragment.kt
+│       │   │               │   │   └── TemplatePageFragment.kt
+│       │   │               │   ├── timetable
+│       │   │               │   │   ├── GenerateBlockTimetableDialog.kt
+│       │   │               │   │   ├── LessonDetailsDialog.kt
+│       │   │               │   │   ├── TimetableDayFragment.kt
+│       │   │               │   │   └── TimetableFragment.kt
+│       │   │               │   ├── webpush
+│       │   │               │   │   ├── WebPushBrowserAdapter.kt
+│       │   │               │   │   └── WebPushFragment.kt
+│       │   │               │   └── widgets
+│       │   │               │       ├── LessonDialogActivity.kt
+│       │   │               │       ├── WidgetConfig.java
+│       │   │               │       ├── WidgetConfigActivity.java
+│       │   │               │       ├── luckynumber
+│       │   │               │       │   └── WidgetLuckyNumberProvider.kt
+│       │   │               │       ├── notifications
+│       │   │               │       │   ├── WidgetNotificationsFactory.kt
+│       │   │               │       │   ├── WidgetNotificationsProvider.kt
+│       │   │               │       │   └── WidgetNotificationsService.kt
+│       │   │               │       └── timetable
+│       │   │               │           ├── WidgetTimetableFactory.java
+│       │   │               │           ├── WidgetTimetableProvider.kt
+│       │   │               │           └── WidgetTimetableService.java
+│       │   │               └── utils
+│       │   │                   ├── Anim.java
+│       │   │                   ├── AppManagerIntentList.kt
+│       │   │                   ├── BetterLink.kt
+│       │   │                   ├── BetterLinkMovementMethod.java
+│       │   │                   ├── BigNightUtil.kt
+│       │   │                   ├── CheckableImageView.java
+│       │   │                   ├── Colors.java
+│       │   │                   ├── DefaultTextStyles.kt
+│       │   │                   ├── MutableLazy.kt
+│       │   │                   ├── PausedNavigationData.kt
+│       │   │                   ├── PermissionChecker.java
+│       │   │                   ├── ProfileImageHolder.kt
+│       │   │                   ├── SimpleDividerItemDecoration.java
+│       │   │                   ├── TextInputDropDown.kt
+│       │   │                   ├── TextInputKeyboardEdit.kt
+│       │   │                   ├── Utils.java
+│       │   │                   ├── html
+│       │   │                   │   ├── BetterHtml.kt
+│       │   │                   │   └── LiTagHandler.kt
+│       │   │                   ├── models
+│       │   │                   │   ├── Date.java
+│       │   │                   │   ├── ItemGradesSubjectModel.java
+│       │   │                   │   ├── ItemWidgetTimetableModel.java
+│       │   │                   │   ├── Time.java
+│       │   │                   │   ├── UnreadCounter.kt
+│       │   │                   │   └── Week.java
+│       │   │                   └── span
+│       │   │                       ├── BoldSpan.kt
+│       │   │                       ├── ImprovedBulletSpan.kt
+│       │   │                       ├── ItalicSpan.kt
+│       │   │                       ├── SubscriptSizeSpan.kt
+│       │   │                       ├── SuperscriptSizeSpan.kt
+│       │   │                       └── UnderlineCustomSpan.kt
+│       │   └── res
+│       │       ├── anim
+│       │       │   ├── fade_in.xml
+│       │       │   ├── fade_out.xml
+│       │       │   ├── shake.xml
+│       │       │   ├── slide_in_left.xml
+│       │       │   ├── slide_in_right.xml
+│       │       │   ├── slide_out_left.xml
+│       │       │   ├── slide_out_right.xml
+│       │       │   ├── task_close_enter.xml
+│       │       │   ├── task_close_exit.xml
+│       │       │   ├── task_open_enter.xml
+│       │       │   └── task_open_exit.xml
+│       │       ├── drawable
+│       │       │   ├── bg_circle.xml
+│       │       │   ├── bg_rounded_16dp.xml
+│       │       │   ├── bg_rounded_16dp_outline.xml
+│       │       │   ├── bg_rounded_4dp.xml
+│       │       │   ├── bg_rounded_4dp_outline.xml
+│       │       │   ├── bg_rounded_8dp.xml
+│       │       │   ├── bg_rounded_8dp_outline.xml
+│       │       │   ├── bg_rounded_edittext.xml
+│       │       │   ├── bg_rounded_edittext_pressed.xml
+│       │       │   ├── bg_rounded_ripple.xml
+│       │       │   ├── bg_rounded_ripple_4dp.xml
+│       │       │   ├── dead_background.xml
+│       │       │   ├── divider.xml
+│       │       │   ├── dropdown_arrow.xml
+│       │       │   ├── egg1.webp
+│       │       │   ├── egg2.webp
+│       │       │   ├── egg3.webp
+│       │       │   ├── egg4.webp
+│       │       │   ├── egg5.webp
+│       │       │   ├── egg6.webp
+│       │       │   ├── emoji_glasses.xml
+│       │       │   ├── emoji_neutral.xml
+│       │       │   ├── emoji_no_face.xml
+│       │       │   ├── emoji_sad.xml
+│       │       │   ├── emoji_smiling.xml
+│       │       │   ├── face_1.jpg
+│       │       │   ├── face_2.png
+│       │       │   ├── header.webp
+│       │       │   ├── ic_announcement.xml
+│       │       │   ├── ic_archive.xml
+│       │       │   ├── ic_attendance.xml
+│       │       │   ├── ic_behavior.xml
+│       │       │   ├── ic_bell.xml
+│       │       │   ├── ic_bell_wtf.xml
+│       │       │   ├── ic_calendar_day.xml
+│       │       │   ├── ic_calendar_event.xml
+│       │       │   ├── ic_grade.xml
+│       │       │   ├── ic_message.xml
+│       │       │   ├── ic_no_events.xml
+│       │       │   ├── ic_no_grades.xml
+│       │       │   ├── ic_no_homework.xml
+│       │       │   ├── ic_no_messages.xml
+│       │       │   ├── ic_no_notifications.xml
+│       │       │   ├── ic_no_timetable.xml
+│       │       │   ├── ic_note.xml
+│       │       │   ├── ic_rip.xml
+│       │       │   ├── ic_shortcut_agenda_foreground.xml
+│       │       │   ├── ic_shortcut_grades_foreground.xml
+│       │       │   ├── ic_shortcut_homework_foreground.xml
+│       │       │   ├── ic_shortcut_messages_foreground.xml
+│       │       │   ├── ic_shortcut_timetable_foreground.xml
+│       │       │   ├── ic_sunbed.xml
+│       │       │   ├── ic_sync.xml
+│       │       │   ├── ic_timetable.xml
+│       │       │   ├── ic_update.xml
+│       │       │   ├── ic_web_push_no_browsers.xml
+│       │       │   ├── login_help_librus.webp
+│       │       │   ├── login_help_mobidziennik_address.webp
+│       │       │   ├── login_help_mobidziennik_login.webp
+│       │       │   ├── login_help_vulcan_register.webp
+│       │       │   ├── login_help_vulcan_token.webp
+│       │       │   ├── login_logo_librus.png
+│       │       │   ├── login_logo_mobidziennik.png
+│       │       │   ├── login_logo_podlasie.png
+│       │       │   ├── login_logo_usos.png
+│       │       │   ├── login_logo_vulcan.png
+│       │       │   ├── login_mode_librus_email.png
+│       │       │   ├── login_mode_librus_jst.png
+│       │       │   ├── login_mode_librus_synergia.png
+│       │       │   ├── login_mode_mobidziennik_web.png
+│       │       │   ├── login_mode_usos_api.png
+│       │       │   ├── login_mode_vulcan_hebe.png
+│       │       │   ├── login_mode_vulcan_web.png
+│       │       │   ├── profile_.png
+│       │       │   ├── profile_archived.xml
+│       │       │   ├── recaptcha_card_border.xml
+│       │       │   ├── recaptcha_check.png
+│       │       │   ├── recaptcha_checkbox_border.xml
+│       │       │   ├── recaptcha_checkbox_border_active.xml
+│       │       │   ├── recaptcha_checkbox_border_focused.xml
+│       │       │   ├── recaptcha_checkbox_border_hovered.xml
+│       │       │   ├── recaptcha_checkbox_border_normal.xml
+│       │       │   ├── recaptcha_image.xml
+│       │       │   ├── recaptcha_image_checked.xml
+│       │       │   ├── recaptcha_image_pressed.xml
+│       │       │   ├── shadow_right.xml
+│       │       │   ├── shadow_top.xml
+│       │       │   ├── splash_background.xml
+│       │       │   ├── thanos_idle.png
+│       │       │   ├── timetable_lesson_annotation.xml
+│       │       │   ├── timetable_lesson_bg_dark.xml
+│       │       │   ├── timetable_lesson_bg_light.xml
+│       │       │   ├── timetable_marker_triangle.xml
+│       │       │   ├── timetable_subject_color_rounded.xml
+│       │       │   ├── unread_red_circle.xml
+│       │       │   ├── widget_background.xml
+│       │       │   ├── widget_background_bottom.xml
+│       │       │   ├── widget_background_dark.xml
+│       │       │   ├── widget_background_dark_bottom.xml
+│       │       │   └── widget_background_top.xml
+│       │       ├── drawable-hdpi
+│       │       │   └── ic_notification.png
+│       │       ├── drawable-mdpi
+│       │       │   └── ic_notification.png
+│       │       ├── drawable-nodpi
+│       │       │   ├── widget_lucky_number_big_preview.png
+│       │       │   ├── widget_lucky_number_dark_big_preview.png
+│       │       │   ├── widget_lucky_number_dark_preview.png
+│       │       │   ├── widget_lucky_number_preview.png
+│       │       │   ├── widget_notifications_big_preview.png
+│       │       │   ├── widget_notifications_dark_big_preview.png
+│       │       │   ├── widget_notifications_dark_preview.png
+│       │       │   ├── widget_notifications_preview.png
+│       │       │   ├── widget_timetable_big_preview.png
+│       │       │   ├── widget_timetable_dark_big_preview.png
+│       │       │   ├── widget_timetable_dark_preview.png
+│       │       │   └── widget_timetable_preview.png
+│       │       ├── drawable-v21
+│       │       │   ├── bg_rounded_ripple.xml
+│       │       │   └── bg_rounded_ripple_4dp.xml
+│       │       ├── drawable-xhdpi
+│       │       │   ├── ic_notification.png
+│       │       │   ├── login_mode_podlasie_api.png
+│       │       │   └── recaptcha.png
+│       │       ├── drawable-xxhdpi
+│       │       │   └── ic_notification.png
+│       │       ├── drawable-xxxhdpi
+│       │       │   └── ic_notification.png
+│       │       ├── layout
+│       │       │   ├── activity_build_invalid.xml
+│       │       │   ├── activity_counter.xml
+│       │       │   ├── activity_crash.xml
+│       │       │   ├── activity_feedback.xml
+│       │       │   ├── activity_szkolny.xml
+│       │       │   ├── agenda_counter_item.xml
+│       │       │   ├── agenda_event_compact_item.xml
+│       │       │   ├── agenda_event_item.xml
+│       │       │   ├── agenda_group_item.xml
+│       │       │   ├── agenda_wrapped_counter.xml
+│       │       │   ├── agenda_wrapped_event.xml
+│       │       │   ├── agenda_wrapped_event_compact.xml
+│       │       │   ├── agenda_wrapped_group.xml
+│       │       │   ├── attachment_list_item.xml
+│       │       │   ├── attendance_config_dialog.xml
+│       │       │   ├── attendance_details_dialog.xml
+│       │       │   ├── attendance_item_attendance.xml
+│       │       │   ├── attendance_item_day_range.xml
+│       │       │   ├── attendance_item_empty.xml
+│       │       │   ├── attendance_item_month.xml
+│       │       │   ├── attendance_item_subject.xml
+│       │       │   ├── attendance_item_type.xml
+│       │       │   ├── attendance_list_fragment.xml
+│       │       │   ├── attendance_summary_fragment.xml
+│       │       │   ├── base_pager_fragment.xml
+│       │       │   ├── captcha_dialog_librus.xml
+│       │       │   ├── card_home.xml
+│       │       │   ├── card_home_archive.xml
+│       │       │   ├── card_home_availability.xml
+│       │       │   ├── card_home_debug.xml
+│       │       │   ├── card_home_events.xml
+│       │       │   ├── card_home_grades.xml
+│       │       │   ├── card_home_lucky_number.xml
+│       │       │   ├── card_home_notes.xml
+│       │       │   ├── card_home_template.xml
+│       │       │   ├── card_home_timetable.xml
+│       │       │   ├── contributors_fragment.xml
+│       │       │   ├── contributors_list_fragment.xml
+│       │       │   ├── contributors_list_item.xml
+│       │       │   ├── dialog_announcement.xml
+│       │       │   ├── dialog_bell_sync.xml
+│       │       │   ├── dialog_bell_sync_time_choose.xml
+│       │       │   ├── dialog_config_agenda.xml
+│       │       │   ├── dialog_config_grades.xml
+│       │       │   ├── dialog_day.xml
+│       │       │   ├── dialog_edit_text.xml
+│       │       │   ├── dialog_event_details.xml
+│       │       │   ├── dialog_event_manual_v2.xml
+│       │       │   ├── dialog_generate_block_timetable.xml
+│       │       │   ├── dialog_grade_details.xml
+│       │       │   ├── dialog_lesson_change_list.xml
+│       │       │   ├── dialog_lesson_details.xml
+│       │       │   ├── dialog_profile_config.xml
+│       │       │   ├── dialog_register_unavailable.xml
+│       │       │   ├── dialog_teacher_absence_list.xml
+│       │       │   ├── dialog_template.xml
+│       │       │   ├── dialog_widget_config.xml
+│       │       │   ├── eggfall.xml
+│       │       │   ├── event_list_item.xml
+│       │       │   ├── fragment_agenda_calendar.xml
+│       │       │   ├── fragment_agenda_default.xml
+│       │       │   ├── fragment_announcements.xml
+│       │       │   ├── fragment_behaviour.xml
+│       │       │   ├── fragment_debug.xml
+│       │       │   ├── fragment_feedback.xml
+│       │       │   ├── fragment_grades_editor.xml
+│       │       │   ├── fragment_home.xml
+│       │       │   ├── fragment_loading.xml
+│       │       │   ├── fragment_profile_manager.xml
+│       │       │   ├── fragment_template.xml
+│       │       │   ├── fragment_timetable_v2.xml
+│       │       │   ├── grades_item_empty.xml
+│       │       │   ├── grades_item_grade.xml
+│       │       │   ├── grades_item_semester.xml
+│       │       │   ├── grades_item_stats.xml
+│       │       │   ├── grades_item_subject.xml
+│       │       │   ├── grades_item_unknown_subject.xml
+│       │       │   ├── grades_list_fragment.xml
+│       │       │   ├── homework_list_fragment.xml
+│       │       │   ├── lab_fragment.xml
+│       │       │   ├── lab_item_element.xml
+│       │       │   ├── lab_item_object.xml
+│       │       │   ├── lab_item_sub_object.xml
+│       │       │   ├── lab_playground.xml
+│       │       │   ├── login_activity.xml
+│       │       │   ├── login_chooser_fragment.xml
+│       │       │   ├── login_chooser_item.xml
+│       │       │   ├── login_chooser_mode_item.xml
+│       │       │   ├── login_finish_fragment.xml
+│       │       │   ├── login_form_checkbox_item.xml
+│       │       │   ├── login_form_field_item.xml
+│       │       │   ├── login_form_fragment.xml
+│       │       │   ├── login_form_item_qr.xml
+│       │       │   ├── login_platform_item.xml
+│       │       │   ├── login_platform_list_fragment.xml
+│       │       │   ├── login_prize_fragment.xml
+│       │       │   ├── login_progress_fragment.xml
+│       │       │   ├── login_summary_fragment.xml
+│       │       │   ├── login_summary_item.xml
+│       │       │   ├── login_sync_error_fragment.xml
+│       │       │   ├── login_sync_fragment.xml
+│       │       │   ├── mal_material_about_profile_item.xml
+│       │       │   ├── material_drawer_header.xml
+│       │       │   ├── material_drawer_item_profile.xml
+│       │       │   ├── message_fragment.xml
+│       │       │   ├── messages_compose_fragment.xml
+│       │       │   ├── messages_config_dialog.xml
+│       │       │   ├── messages_list_fragment.xml
+│       │       │   ├── messages_list_item.xml
+│       │       │   ├── note_details_dialog.xml
+│       │       │   ├── note_dialog_header.xml
+│       │       │   ├── note_dialog_subtitle.xml
+│       │       │   ├── note_editor_dialog.xml
+│       │       │   ├── note_list_category_item.xml
+│       │       │   ├── note_list_dialog.xml
+│       │       │   ├── note_list_item.xml
+│       │       │   ├── notes_fragment.xml
+│       │       │   ├── notifications_list_fragment.xml
+│       │       │   ├── notifications_list_item.xml
+│       │       │   ├── recaptcha_dialog.xml
+│       │       │   ├── recaptcha_view.xml
+│       │       │   ├── row_announcements_item.xml
+│       │       │   ├── row_dialog_teacher_absence_item.xml
+│       │       │   ├── row_grades_editor_item.xml
+│       │       │   ├── row_notices_item.xml
+│       │       │   ├── row_timetable_block_item.xml
+│       │       │   ├── row_widget_notifications_big_item.xml
+│       │       │   ├── row_widget_notifications_dark_big_item.xml
+│       │       │   ├── row_widget_notifications_dark_item.xml
+│       │       │   ├── row_widget_notifications_item.xml
+│       │       │   ├── row_widget_timetable_big_item.xml
+│       │       │   ├── row_widget_timetable_dark_big_item.xml
+│       │       │   ├── row_widget_timetable_dark_item.xml
+│       │       │   ├── row_widget_timetable_item.xml
+│       │       │   ├── search_item.xml
+│       │       │   ├── snowfall.xml
+│       │       │   ├── styled_text_buttons.xml
+│       │       │   ├── styled_text_dialog.xml
+│       │       │   ├── teacher_item.xml
+│       │       │   ├── teachers_list_fragment.xml
+│       │       │   ├── template_list_fragment.xml
+│       │       │   ├── template_list_item.xml
+│       │       │   ├── template_list_page_fragment.xml
+│       │       │   ├── template_page_fragment.xml
+│       │       │   ├── timetable_config_dialog.xml
+│       │       │   ├── timetable_day_fragment.xml
+│       │       │   ├── timetable_free_day.xml
+│       │       │   ├── timetable_hour_label.xml
+│       │       │   ├── timetable_lesson.xml
+│       │       │   ├── timetable_no_lessons.xml
+│       │       │   ├── timetable_no_timetable.xml
+│       │       │   ├── update_progress_dialog.xml
+│       │       │   ├── web_push_browser_item.xml
+│       │       │   ├── web_push_fragment.xml
+│       │       │   ├── widget_lucky_number.xml
+│       │       │   ├── widget_lucky_number_big.xml
+│       │       │   ├── widget_lucky_number_dark.xml
+│       │       │   ├── widget_lucky_number_dark_big.xml
+│       │       │   ├── widget_notifications.xml
+│       │       │   ├── widget_notifications_big.xml
+│       │       │   ├── widget_notifications_dark.xml
+│       │       │   ├── widget_notifications_dark_big.xml
+│       │       │   ├── widget_profile_dialog_item.xml
+│       │       │   ├── widget_timetable.xml
+│       │       │   ├── widget_timetable_big.xml
+│       │       │   ├── widget_timetable_dark.xml
+│       │       │   └── widget_timetable_dark_big.xml
+│       │       ├── mipmap-anydpi-v26
+│       │       │   ├── ic_launcher_v1.xml
+│       │       │   ├── ic_launcher_v3.xml
+│       │       │   ├── ic_launcher_v4.xml
+│       │       │   ├── ic_launcher_v5.xml
+│       │       │   ├── ic_shortcut_agenda.xml
+│       │       │   ├── ic_shortcut_grades.xml
+│       │       │   ├── ic_shortcut_homework.xml
+│       │       │   ├── ic_shortcut_messages.xml
+│       │       │   └── ic_shortcut_timetable.xml
+│       │       ├── mipmap-hdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-mdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-xhdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-xxhdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── mipmap-xxxhdpi
+│       │       │   ├── ic_launcher_v1.webp
+│       │       │   ├── ic_launcher_v1_foreground.webp
+│       │       │   ├── ic_launcher_v3.webp
+│       │       │   ├── ic_launcher_v3_foreground.webp
+│       │       │   ├── ic_launcher_v4.webp
+│       │       │   ├── ic_launcher_v4_foreground.webp
+│       │       │   ├── ic_launcher_v5.webp
+│       │       │   ├── ic_launcher_v5_foreground.webp
+│       │       │   ├── ic_launcher_v5_monochrome.webp
+│       │       │   ├── ic_splash_v1.webp
+│       │       │   ├── ic_splash_v3.webp
+│       │       │   ├── ic_splash_v4.webp
+│       │       │   └── ic_splash_v5.webp
+│       │       ├── navigation
+│       │       │   └── nav_login.xml
+│       │       ├── raw
+│       │       │   ├── app_data.json
+│       │       │   └── ogarnij_sie.mp3
+│       │       ├── values
+│       │       │   ├── attrs.xml
+│       │       │   ├── colors.xml
+│       │       │   ├── colors_m2.xml
+│       │       │   ├── colors_m3.xml
+│       │       │   ├── dimens.xml
+│       │       │   ├── errors.xml
+│       │       │   ├── ids.xml
+│       │       │   ├── plurals.xml
+│       │       │   ├── strings.xml
+│       │       │   ├── styleable.xml
+│       │       │   ├── styles.xml
+│       │       │   ├── styles_black.xml
+│       │       │   ├── styles_m2.xml
+│       │       │   ├── styles_m3.xml
+│       │       │   └── wear.xml
+│       │       ├── values-de
+│       │       │   └── strings.xml
+│       │       ├── values-en
+│       │       │   ├── plurals.xml
+│       │       │   └── strings.xml
+│       │       ├── values-night
+│       │       │   ├── colors_m2.xml
+│       │       │   ├── colors_m3.xml
+│       │       │   └── styles_black.xml
+│       │       └── xml
+│       │           ├── backup_descriptor.xml
+│       │           ├── network_security_config.xml
+│       │           ├── provider_paths.xml
+│       │           ├── widget_lucky_number_info.xml
+│       │           ├── widget_notifications_info.xml
+│       │           └── widget_timetable_info.xml
+│       ├── play
+│       │   └── java
+│       │       └── pl
+│       │           └── szczodrzynski
+│       │               └── edziennik
+│       │                   ├── network
+│       │                   │   └── SSLProviderInstaller.kt
+│       │                   └── sync
+│       │                       └── UpdateDownloaderService.kt
+│       └── play-not
+│           ├── AndroidManifest.xml
+│           └── java
+│               └── pl
+│                   └── szczodrzynski
+│                       └── edziennik
+│                           ├── network
+│                           │   └── SSLProviderInstaller.kt
+│                           └── sync
+│                               └── UpdateDownloaderService.kt
+├── build.gradle
+├── gradle
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
+├── gradle.properties
+├── gradlew
+├── gradlew.bat
+├── navlib
+│   ├── build.gradle
+│   ├── consumer-rules.pro
+│   ├── proguard-rules.pro
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── java
+│           │   └── pl
+│           │       └── szczodrzynski
+│           │           └── navlib
+│           │               ├── Anim.kt
+│           │               ├── BadgeDrawable.java
+│           │               ├── ImageHolder.kt
+│           │               ├── NavBottomBar.kt
+│           │               ├── NavMenuBarBase.kt
+│           │               ├── NavToolbar.kt
+│           │               ├── NavView.kt
+│           │               ├── SystemBarsUtil.kt
+│           │               ├── Utils.kt
+│           │               ├── bottomsheet
+│           │               │   ├── BottomSheetAdapter.kt
+│           │               │   ├── NavBottomSheet.kt
+│           │               │   ├── ViewHolderProvider.kt
+│           │               │   └── items
+│           │               │       ├── BottomSheetPrimaryItem.kt
+│           │               │       ├── BottomSheetSeparatorItem.kt
+│           │               │       └── IBottomSheetItem.kt
+│           │               └── drawer
+│           │                   ├── IDrawerProfile.kt
+│           │                   ├── IUnreadCounter.kt
+│           │                   ├── NavDrawer.kt
+│           │                   └── items
+│           │                       └── DrawerPrimaryItem.kt
+│           └── res
+│               ├── color
+│               │   ├── mtrl_filled_background_color.xml
+│               │   └── text_input_layout_background.xml
+│               ├── drawable
+│               │   ├── bottom_sheet_background.xml
+│               │   ├── bottom_sheet_control_bar.xml
+│               │   ├── bs_item_background.xml
+│               │   ├── bs_item_background_base.xml
+│               │   ├── header.png
+│               │   ├── ic_android.xml
+│               │   ├── ic_light.xml
+│               │   ├── ic_menu_badge.xml
+│               │   ├── ic_night.xml
+│               │   ├── nightly_text_rounded.xml
+│               │   ├── placeholder.xml
+│               │   ├── profile.xml
+│               │   ├── shadow_bottom.xml
+│               │   └── shadow_right.xml
+│               ├── drawable-v21
+│               │   └── bs_item_background.xml
+│               ├── layout
+│               │   ├── material_drawer.xml
+│               │   ├── material_drawer_slider.xml
+│               │   ├── nav_bottom_sheet.xml
+│               │   ├── nav_bs_item_primary.xml
+│               │   ├── nav_bs_item_separator.xml
+│               │   └── nav_view.xml
+│               └── values
+│                   ├── attrs.xml
+│                   ├── colors.xml
+│                   └── dimens.xml
+├── navlib-font
+│   ├── build.gradle
+│   ├── consumer-proguard-rules.pro
+│   ├── gradle.properties
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── java
+│           │   └── com
+│           │       └── mikepenz
+│           │           └── iconics
+│           │               └── typeface
+│           │                   └── library
+│           │                       └── navlibfont
+│           │                           └── NavLibFont.kt
+│           └── res
+│               ├── font
+│               │   └── navlibfont_font_v1_0.ttf
+│               └── values
+│                   ├── font_addon.xml
+│                   └── font_description.xml
+├── settings.gradle
+└── structure.txt
+
+223 directories, 1338 files
